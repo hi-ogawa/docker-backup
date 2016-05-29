@@ -1,0 +1,28 @@
+Model.new(:main, 'main backup') do
+
+  archive :files do |archive|
+    archive.add '/files_to_backup'
+  end
+
+  compress_with Gzip
+  store_with S3 do |s3|
+    s3.access_key_id = 'xxx'
+    s3.secret_access_key = 'xxx'
+    s3.region = 'xxx'
+    s3.bucket = 'xxx'
+    s3.path = '/xxx'
+  end
+
+  notify_by Mail do |mail|
+    mail.on_success           = true
+    mail.on_warning           = true
+    mail.on_failure           = true
+
+    mail.from                 = 'xxx'
+    mail.to                   = 'xxx'
+    mail.address              = 'xxx'
+    mail.domain               = 'xxx'
+    mail.user_name            = 'xxx'
+    mail.password             = 'xxx'
+  end
+end

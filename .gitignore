@@ -1,0 +1,4 @@
+.vagrant
+Vagrantfile
+ansible
+example/models/main.rb
